@@ -1,0 +1,60 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:WpfNavigationAnimation.Controls">
+
+    <Style TargetType="{x:Type local:MadeByAmRo}">
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="Foreground" Value="#121212"/>
+        <Setter Property="HeartBrush" Value="#f28b82"/>
+        <Setter Property="AmRoLogoBrush" Value="#8ab4f8"/>
+        <Setter Property="AmRoUrl" Value="https://github.com/AmRo045"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel
+                        Name="PART_ContainerPanel"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
+                        TextElement.Foreground="{TemplateBinding Foreground}">
+                        <TextBlock Text="Made with "/>
+                        <Viewbox
+                            Width="18" 
+                            Height="{Binding RelativeSource={RelativeSource Self}, Path=Width}">
+                            <Canvas Width="24" Height="24">
+                                <Path Fill="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HeartBrush}" Data="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"/>
+                            </Canvas>
+                        </Viewbox>
+                        <TextBlock Text=" by "/>
+                        <Viewbox
+                            Width="18" 
+                            Height="{Binding RelativeSource={RelativeSource Self}, Path=Width}">
+                            <Canvas
+                                Name="PART_AmRoLogoCanvas"
+                                Cursor="Hand"
+                                Width="2048" 
+                                Height="2048">
+                                <Path Fill="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=AmRoLogoBrush}" Data="M572.7,1377.9c-31.1,12.8-130,18.7-130,18.7s-217.4,10.5-316.4-23.3C54.6,1348.8,55,1270.7,55,1270.7s52.6-348.5,171-597.3 C344.4,424.7,705,350,705,350C392.3,609.3,572.7,1377.9,572.7,1377.9z"/>
+                                <Path Fill="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=AmRoLogoBrush}" Data="M687.6,344.1c0,0-4.6-23.1,17-29.6c21.6-6.5,76.8-11.3,87.7,0c10.9,11.3,9.4,22.4,9.4,22.4S767.7,328.7,687.6,344.1z"/>
+                                <Path Fill="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=AmRoLogoBrush}" Data="M1342.2,1150c0,0-170.7,9-335.2,72c-128.2,49.1-260.7,102.4-328.6,125.6c-72.6,24.8-97,28.6-97,28.6s-47.9-235.1-52-440.4 C520.3,476.2,720.8,350,720.8,350C1157.6,278.3,1342.2,1150,1342.2,1150z"/>
+                                <Path Fill="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=AmRoLogoBrush}" Data="M901.3,364.4c0,0,241.8,36.2,414.3,223.1C1463,747.1,1514.7,1172,1514.7,1172s-25.8-14.5-84.3-20.3 c-19.6-1.9-75.3-0.8-75.3-0.8s-23.2-117.3-93-295.9C1199.3,694,1093.4,453.1,901.3,364.4z"/>
+                                <Path Fill="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=AmRoLogoBrush}" Data="M1890.5,1594.7c-79.3-7.3-233-157-233-157c61.7-15.3,109-18.9,151.1-12.2C2032.4,1460.7,2019.5,1606.5,1890.5,1594.7z"/>
+                                <Path Fill="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=AmRoLogoBrush}" Data="M2012.9,1556.8c0,0,4.6-21.2-3.4-42c-7.4-19.4-24.5-39.4-35.3-48c-65.6-51.8-230.8-143.1-485.3,22.1 c-426.8,277.2-443.7,260.3-583,243c-138.8-17.3-439.8-327.5-439.8-327.5c259.1-17.6,538.3-230.9,883.2-244.3 c103.6-4.1,142.8,11,163.8,18c30.6,10.2,53.9,25.1,224.5,124.2c147.6,85.7,210,132.2,241.1,159.9 C2003.8,1484.6,2029.1,1524.1,2012.9,1556.8z"/>
+                            </Canvas>
+                        </Viewbox>
+                    </StackPanel>
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="PART_ContainerPanel" Property="Opacity" Value="0.56"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

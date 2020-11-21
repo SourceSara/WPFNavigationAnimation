@@ -10,9 +10,9 @@
     Title="SourceSara.Com ~ Navigation Animation Demo"
     Background="#17212b"
     Foreground="#cbdced"
-    MinHeight="600"
+    MinHeight="660"
     MinWidth="900"
-    Height="600"
+    Height="660"
     Width="900">
     <Window.Resources>
         <Style TargetType="{x:Type Button}">
@@ -92,5 +92,12 @@
         <controls:PageHost
             x:Name="MainWindowPageHost"
             Grid.Row="1"/>
+
+        <controls:MadeByAmRo
+            Grid.Row="2"
+            Margin="0,16,0,6"
+            Foreground="#a0afc0"
+            AmRoLogoBrush="#8ab4f8"
+            HeartBrush="#f28b82"/>
     </Grid>
 </Window>
