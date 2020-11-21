@@ -6,14 +6,28 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     mc:Ignorable="d" 
     Background="#f05454"
-    Height="450" 
-    Width="800"
-    Title="ScaleToOut ~ ScaleFromIn">
-    <Grid>
+    d:DesignHeight="600" 
+    d:DesignWidth="800"
+    Title="🤟 ScaleToOut ~ ScaleFromIn 🤟">
+    <Grid VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
         <TextBlock 
+            Grid.Row="0"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            FontSize="32"
+            FontSize="64"
+            Foreground="#131B27"
+            Text="😎"/>
+
+        <TextBlock 
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="42"
             Foreground="#131B27"
             Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}, Path=Title}"/>
     </Grid>

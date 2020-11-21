@@ -91,11 +91,12 @@
 
         <controls:PageHost
             x:Name="MainWindowPageHost"
-            Grid.Row="1"/>
+            Grid.Row="1"
+            Margin="0,8"/>
 
         <controls:MadeByAmRo
             Grid.Row="2"
-            Margin="0,16,0,6"
+            Margin="0,0,0,8"
             Foreground="#a0afc0"
             AmRoLogoBrush="#8ab4f8"
             HeartBrush="#f28b82"/>
