@@ -3,7 +3,8 @@
     public enum OldPageAnimation
     {
         FadeOut,
-        ScaleOut,
+        ScaleToIn,
+        ScaleToOut,
         SlideOutToRight,
         SlideOutToLeft
     }

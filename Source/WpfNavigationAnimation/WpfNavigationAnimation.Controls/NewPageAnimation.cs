@@ -3,7 +3,8 @@
     public enum NewPageAnimation
     {
         FadeIn,
-        ScaleIn,
+        ScaleFromIn,
+        ScaleFromOut,
         SlideInFromRight,
         SlideInFromLeft
     }

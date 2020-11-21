@@ -77,8 +77,11 @@ namespace WpfNavigationAnimation.Controls
                 case OldPageAnimation.FadeOut:
                     FadeOut(page, e);
                     break;
-                case OldPageAnimation.ScaleOut:
-                    ScaleOut(page, e);
+                case OldPageAnimation.ScaleToIn:
+                    OldPageScaleToIn(page, e);
+                    break;
+                case OldPageAnimation.ScaleToOut:
+                    OldPageScaleToOut(page, e);
                     break;
                 case OldPageAnimation.SlideOutToRight:
                     SlideOutToRight(page, e);
@@ -96,8 +99,11 @@ namespace WpfNavigationAnimation.Controls
                 case NewPageAnimation.FadeIn:
                     FadeIn(page);
                     break;
-                case NewPageAnimation.ScaleIn:
-                    ScaleIn(page);
+                case NewPageAnimation.ScaleFromIn:
+                    NewPageScaleFromIn(page);
+                    break;
+                case NewPageAnimation.ScaleFromOut:
+                    NewPageScaleFromOut(page);
                     break;
                 case NewPageAnimation.SlideInFromRight:
                     SlideInFromRight(page);
@@ -203,44 +209,6 @@ namespace WpfNavigationAnimation.Controls
             return (xAnimation, yAnimation);
         }
 
-        private static Storyboard GetScaleAnimation2(
-            Page page, Point? from = null, Point? to = null,
-            TimeSpan? duration = null, TimeSpan? beginTime = null)
-        {
-            var storyboard = new Storyboard();
-            var scale = new ScaleTransform(1, 1);
-            var marginAnimation = GetMarginAnimation(page);
-            var xAnimation = new DoubleAnimation
-            {
-                From = from is null ? 1 : from.GetValueOrDefault().X,
-                To = to is null ? 1 : to.GetValueOrDefault().X,
-                Duration = new Duration(duration is null ? TimeSpan.FromSeconds(0) : duration.GetValueOrDefault()),
-                BeginTime = beginTime is null ? TimeSpan.FromSeconds(0) : beginTime
-            };
-            var yAnimation = new DoubleAnimation
-            {
-                From = from is null ? 1 : from.GetValueOrDefault().Y,
-                To = to is null ? 1 : to.GetValueOrDefault().Y,
-                Duration = new Duration(duration is null ? TimeSpan.FromSeconds(0) : duration.GetValueOrDefault()),
-                BeginTime = beginTime is null ? TimeSpan.FromSeconds(0) : beginTime
-            };
-
-            Storyboard.SetTargetProperty(xAnimation, new PropertyPath("RenderTransform.ScaleX"));
-            Storyboard.SetTarget(xAnimation, page);
-
-            Storyboard.SetTargetProperty(yAnimation, new PropertyPath("RenderTransform.ScaleY"));
-            Storyboard.SetTarget(yAnimation, page);
-
-            page.RenderTransformOrigin = new Point(0.5, 0.5);
-            page.RenderTransform = scale;
-
-            storyboard.Children.Add(marginAnimation);
-            storyboard.Children.Add(xAnimation);
-            storyboard.Children.Add(yAnimation);
-
-            return storyboard;
-        }
-
         #endregion
 
         #region Public methods
@@ -269,10 +237,24 @@ namespace WpfNavigationAnimation.Controls
             storyboard.Begin();
         }
 
-        private void ScaleIn(Page page)
+        private void NewPageScaleFromIn(Page page)
         {
             var (xAnimation, yAnimation) = GetScaleAnimation(page, new Point(0, 0), new Point(1, 1), TimeSpan.FromSeconds(0.24));
             var opacityAnimation = GetOpacityAnimation(page);
+            var marginAnimation = GetMarginAnimation(page);
+            var storyboard = new Storyboard();
+
+            storyboard.Children.Add(xAnimation);
+            storyboard.Children.Add(yAnimation);
+            storyboard.Children.Add(marginAnimation);
+            storyboard.Children.Add(opacityAnimation);
+            storyboard.Begin();
+        }
+
+        private void NewPageScaleFromOut(Page page)
+        {
+            var (xAnimation, yAnimation) = GetScaleAnimation(page, new Point(2, 2), new Point(1, 1), TimeSpan.FromSeconds(0.24));
+            var opacityAnimation = GetOpacityAnimation(page, 0, 1, TimeSpan.FromSeconds(0.24));
             var marginAnimation = GetMarginAnimation(page);
             var storyboard = new Storyboard();
 
@@ -330,10 +312,27 @@ namespace WpfNavigationAnimation.Controls
             storyboard.Begin();
         }
 
-        private void ScaleOut(Page page, NavigatingCancelEventArgs e = default)
+        private void OldPageScaleToIn(Page page, NavigatingCancelEventArgs e = default)
         {
             var (xAnimation, yAnimation) = GetScaleAnimation(page, new Point(1, 1), new Point(0, 0), TimeSpan.FromSeconds(0.24));
             var opacityAnimation = GetOpacityAnimation(page);
+            var marginAnimation = GetMarginAnimation(page);
+            var storyboard = new Storyboard();
+
+            if (e is { })
+                storyboard.Completed += (sender, args) => HandleNavigation(e);
+
+            storyboard.Children.Add(xAnimation);
+            storyboard.Children.Add(yAnimation);
+            storyboard.Children.Add(marginAnimation);
+            storyboard.Children.Add(opacityAnimation);
+            storyboard.Begin();
+        }
+
+        private void OldPageScaleToOut(Page page, NavigatingCancelEventArgs e = default)
+        {
+            var (xAnimation, yAnimation) = GetScaleAnimation(page, new Point(1, 1), new Point(2, 2), TimeSpan.FromSeconds(0.24));
+            var opacityAnimation = GetOpacityAnimation(page, 1, 0, TimeSpan.FromSeconds(0.24));
             var marginAnimation = GetMarginAnimation(page);
             var storyboard = new Storyboard();
 

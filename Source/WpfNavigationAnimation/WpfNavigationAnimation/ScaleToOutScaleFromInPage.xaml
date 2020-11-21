@@ -1,14 +1,14 @@
 ﻿<Page 
-    x:Class="WpfNavigationAnimation.ScaleOutScaleInPage"
+    x:Class="WpfNavigationAnimation.ScaleToOutScaleFromInPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     mc:Ignorable="d" 
-    Background="#ffa45b"
+    Background="#f05454"
     Height="450" 
     Width="800"
-    Title="ScaleOut ~ ScaleIn">
+    Title="ScaleToOut ~ ScaleFromIn">
     <Grid>
         <TextBlock 
             HorizontalAlignment="Center"
