@@ -2,6 +2,7 @@
 {
     public enum NewPageAnimation
     {
+        None,
         FadeIn,
         ScaleFromIn,
         ScaleFromOut,

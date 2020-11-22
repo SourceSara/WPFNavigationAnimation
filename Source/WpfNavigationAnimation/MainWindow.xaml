@@ -61,6 +61,10 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Center">
             <Button 
+                Content="None ~ None"
+                Click="OnNoneButtonClicked"/>
+            
+            <Button 
                 Content="FadeOut ~ FadeIn"
                 Click="OnFadeButtonClicked"/>
             

@@ -10,6 +10,12 @@ namespace WpfNavigationAnimation
             InitializeComponent();
         }
 
+        private void OnNoneButtonClicked(object sender, RoutedEventArgs e)
+        {
+            MainWindowPageHost.ChangeView(new NonePage(),
+                OldPageAnimation.None, NewPageAnimation.None);
+        }
+
         private void OnFadeButtonClicked(object sender, RoutedEventArgs e)
         {
             MainWindowPageHost.ChangeView(new FadeOutFadeInPage(),

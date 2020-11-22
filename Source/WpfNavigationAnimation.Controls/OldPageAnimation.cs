@@ -2,6 +2,7 @@
 {
     public enum OldPageAnimation
     {
+        None, 
         FadeOut,
         ScaleToIn,
         ScaleToOut,
