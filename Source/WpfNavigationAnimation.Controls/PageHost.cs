@@ -55,10 +55,10 @@ namespace WpfNavigationAnimation.Controls
             if (args.Uri is { } && args.Content is null)
                 throw new InvalidOperationException("PageHost does not supports Uri.");
 
-            if (args.Content is {} && args.Content.Equals(CurrentPage))
+            if (args.Content is { } && args.Content.Equals(CurrentPage))
                 return;
 
-            if (Content is {} && _isDirectNavigationDisabled)
+            if (Content is { } && _isDirectNavigationDisabled)
             {
                 args.Cancel = true;
 
@@ -85,7 +85,7 @@ namespace WpfNavigationAnimation.Controls
             switch (_oldPageAnimation)
             {
                 case OldPageAnimation.None:
-                    OldPageNone(page, args);
+                    HandleNavigation(args);
                     break;
                 case OldPageAnimation.FadeOut:
                     FadeOut(page, args);
@@ -109,9 +109,6 @@ namespace WpfNavigationAnimation.Controls
         {
             switch (_newPageAnimation)
             {
-                case NewPageAnimation.None:
-                    NewPageNone(page);
-                    break;
                 case NewPageAnimation.FadeIn:
                     FadeIn(page);
                     break;
@@ -243,21 +240,6 @@ namespace WpfNavigationAnimation.Controls
 
         #region New page
 
-        private static void NewPageNone(Page page)
-        {
-            var (xAnimation, yAnimation) = GetScaleAnimation(page);
-            var marginAnimation = GetMarginAnimation(page);
-            var opacityAnimation = GetOpacityAnimation(page, 0, 1);
-            var storyboard = new Storyboard();
-
-            storyboard.Children.Add(xAnimation);
-            storyboard.Children.Add(yAnimation);
-            storyboard.Children.Add(marginAnimation);
-            storyboard.Children.Add(opacityAnimation);
-
-            storyboard.Begin();
-        }
-
         private static void FadeIn(Page page)
         {
             var (xAnimation, yAnimation) = GetScaleAnimation(page);
@@ -334,23 +316,6 @@ namespace WpfNavigationAnimation.Controls
         #endregion
 
         #region Old page
-
-        private void OldPageNone(Page page, NavigatingCancelEventArgs args)
-        {
-            var (xAnimation, yAnimation) = GetScaleAnimation(page);
-            var marginAnimation = GetMarginAnimation(page);
-            var opacityAnimation = GetOpacityAnimation(page, 1, 0);
-            var storyboard = new Storyboard();
-
-            storyboard.Completed += (sender, e) => HandleNavigation(args);
-
-            storyboard.Children.Add(xAnimation);
-            storyboard.Children.Add(yAnimation);
-            storyboard.Children.Add(marginAnimation);
-            storyboard.Children.Add(opacityAnimation);
-
-            storyboard.Begin();
-        }
 
         private void FadeOut(Page page, NavigatingCancelEventArgs args)
         {
