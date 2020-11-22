@@ -196,7 +196,7 @@ namespace WpfNavigationAnimation.Controls
                 BeginTime = beginTime is null ? TimeSpan.FromSeconds(0) : beginTime,
                 EasingFunction = new PowerEase
                 {
-                    Power = 10,
+                    Power = 8,
                     EasingMode = EasingMode.EaseInOut
                 }
             };
