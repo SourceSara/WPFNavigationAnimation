@@ -10,10 +10,10 @@
     Title="SourceSara.Com ~ Navigation Animation Demo"
     Background="#17212b"
     Foreground="#cbdced"
-    MinHeight="660"
-    MinWidth="1160"
-    Height="660"
-    Width="900">
+    MinHeight="686"
+    MinWidth="1024"
+    Height="686"
+    Width="1024">
     <Window.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="UseLayoutRounding" Value="True"/>
@@ -53,72 +53,76 @@
     </Window.Resources>
     
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
-        <StackPanel
-            Grid.Row="0"
-            Grid.Column="0">
-            <Button 
-                Content="None ~ None"
-                Click="OnNoneButtonClicked"/>
+        <Grid
+            Grid.Column="0"
+            Background="#17212b">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0">
+                <Button 
+                    Content="Initial Page"
+                    Click="OnInitialPageButtonClicked"/>
+                
+                <Button 
+                    Content="None ~ None"
+                    Click="OnNoneButtonClicked"/>
             
-            <Button 
-                Content="FadeOut ~ FadeIn"
-                Click="OnFadeButtonClicked"/>
+                <Button 
+                    Content="FadeOut ~ FadeIn"
+                    Click="OnFadeButtonClicked"/>
             
-            <Button 
-                Content="ScaleToOut ~ ScaleFromIn"
-                Click="OnScaleToOutScaleFromInButtonClicked"/>
+                <Button 
+                    Content="ScaleToOut ~ ScaleFromIn"
+                    Click="OnScaleToOutScaleFromInButtonClicked"/>
 
-            <Button 
-                Content="ScaleToIn ~ ScaleFromOut"
-                Click="OnScaleToInScaleFromOutButtonClicked"/>
+                <Button 
+                    Content="ScaleToIn ~ ScaleFromOut"
+                    Click="OnScaleToInScaleFromOutButtonClicked"/>
 
-            <Button 
-                Content="ScaleToIn ~ ScaleFromIn"
-                Click="OnScaleToInScaleFromInButtonClicked"/>
+                <Button 
+                    Content="ScaleToIn ~ ScaleFromIn"
+                    Click="OnScaleToInScaleFromInButtonClicked"/>
 
-            <Button 
-                Content="ScaleToOut ~ ScaleFromOut"
-                Click="OnScaleToOutScaleFromOutButtonClicked"/>
+                <Button 
+                    Content="ScaleToOut ~ ScaleFromOut"
+                    Click="OnScaleToOutScaleFromOutButtonClicked"/>
 
-            <Button 
-                Content="SlideOutToLeft ~ SlideInFromRight"
-                Click="OnSlideLeftRightButtonClicked"/>
+                <Button 
+                    Content="SlideOutToLeft ~ SlideInFromRight"
+                    Click="OnSlideLeftRightButtonClicked"/>
 
-            <Button 
-                Content="SlideOutToRight ~ SlideInFromLeft"
-                Click="OnSlideRightLeftButtonClicked"/>
+                <Button 
+                    Content="SlideOutToRight ~ SlideInFromLeft"
+                    Click="OnSlideRightLeftButtonClicked"/>
 
-            <Button 
-                Content="SlideOutToBottom ~ SlideInFromTop"
-                Click="OnSlideBottomTopButtonClicked"/>
+                <Button 
+                    Content="SlideOutToBottom ~ SlideInFromTop"
+                    Click="OnSlideBottomTopButtonClicked"/>
 
-            <Button 
-                Content="SlideOutToTop ~ SlideInFromBottom"
-                Click="OnSlideTopBottomButtonClicked"/>
-        </StackPanel>
+                <Button 
+                    Content="SlideOutToTop ~ SlideInFromBottom"
+                    Click="OnSlideTopBottomButtonClicked"/>
+            </StackPanel>
+            
+            <controls:MadeByAmRo
+                Grid.Row="1"
+                Margin="0,32,0,8"
+                Foreground="#a0afc0"
+                AmRoLogoBrush="#8ab4f8"
+                HeartBrush="#f28b82"/>
+        </Grid>
 
         <controls:PageHost
             x:Name="MainWindowPageHost"
-            Grid.Row="0"
-            Grid.RowSpan="2"
             Grid.Column="1"/>
-
-        <controls:MadeByAmRo
-            Grid.Row="1"
-            Grid.Column="0"
-            Margin="0,0,0,8"
-            Foreground="#a0afc0"
-            AmRoLogoBrush="#8ab4f8"
-            HeartBrush="#f28b82"/>
+        
     </Grid>
 </Window>

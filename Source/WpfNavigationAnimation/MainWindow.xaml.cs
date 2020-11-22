@@ -8,6 +8,18 @@ namespace WpfNavigationAnimation
         public MainWindow()
         {
             InitializeComponent();
+            
+            Loaded += (sender, args) =>
+            {
+                MainWindowPageHost.ChangeView(new InitialPage(),
+                    OldPageAnimation.None, NewPageAnimation.None);
+            };
+        }
+
+        private void OnInitialPageButtonClicked(object sender, RoutedEventArgs e)
+        {
+            MainWindowPageHost.ChangeView(new InitialPage(),
+                OldPageAnimation.None, NewPageAnimation.None);
         }
 
         private void OnNoneButtonClicked(object sender, RoutedEventArgs e)
