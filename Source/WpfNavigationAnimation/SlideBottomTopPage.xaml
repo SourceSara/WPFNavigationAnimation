@@ -21,7 +21,7 @@
             VerticalAlignment="Center"
             FontSize="64"
             Foreground="#131B27"
-            Text="😎"/>
+            Text="😃"/>
 
         <TextBlock 
             Grid.Row="1"
