@@ -11,8 +11,8 @@ namespace WpfNavigationAnimation.Controls
     {
         #region Fields
 
-        private const double AnimationsDuration = 0.10;
-        private const double SlideAnimationMargin = 400;
+        private const double AnimationsDuration = 0.24;
+        private const double SlideAnimationMargin = 600;
         private bool _isDirectNavigationDisabled;
         private OldPageAnimation _oldPageAnimation;
         private NewPageAnimation _newPageAnimation;
