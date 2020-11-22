@@ -7,6 +7,8 @@
         ScaleToIn,
         ScaleToOut,
         SlideOutToRight,
-        SlideOutToLeft
+        SlideOutToLeft,
+        SlideOutToTop,
+        SlideOutToBottom
     }
 }

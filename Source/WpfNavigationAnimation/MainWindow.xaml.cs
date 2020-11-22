@@ -57,5 +57,17 @@ namespace WpfNavigationAnimation
             MainWindowPageHost.ChangeView(new SlideRightLeftPage(), 
                 OldPageAnimation.SlideOutToRight, NewPageAnimation.SlideInFromLeft);
         }
+
+        private void OnSlideTopBottomButtonClicked(object sender, RoutedEventArgs e)
+        {
+            MainWindowPageHost.ChangeView(new SlideTopBottomPage(),
+                OldPageAnimation.SlideOutToTop, NewPageAnimation.SlideInFromBottom);
+        }
+
+        private void OnSlideBottomTopButtonClicked(object sender, RoutedEventArgs e)
+        {
+            MainWindowPageHost.ChangeView(new SlideBottomTopPage(),
+                OldPageAnimation.SlideOutToBottom, NewPageAnimation.SlideInFromTop);
+        }
     }
 }

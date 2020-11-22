@@ -7,6 +7,8 @@
         ScaleFromIn,
         ScaleFromOut,
         SlideInFromRight,
-        SlideInFromLeft
+        SlideInFromLeft,
+        SlideInFromTop,
+        SlideInFromBottom
     }
 }
